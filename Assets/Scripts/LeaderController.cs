@@ -6,12 +6,19 @@ using UnityEngine.AI;
 public class LeaderController : AgentController
 {
     protected GameObject exitObject;
-    private NavMeshAgent navMeshAgent;
+    //private NavMeshAgent navMeshAgent;
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void Update()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        base.Update();
+    }
+
+    public override void PerformBehavior()
+    {
+
+        // Seguir al líder o dirigirse a una salida
+        //Debug.Log($"{gameObject.name} está liderando o saliendo del edificio...");
+        // Agrega aquí lógica específica para el movimiento del seguidor
 
         exitObject = GameObject.FindGameObjectWithTag("Exit");
         if (exitObject != null)
@@ -20,12 +27,8 @@ public class LeaderController : AgentController
         }
         else
         {
-            Debug.LogError("No se encontró un objeto con la etiqueta 'Exit'");
+            Debug.LogError("No se encontró un objeto con la etiqueta 'exit'");
         }
-    }
-    protected override void Update()
-    {
-        base.Update();
     }
 
     void setExitDestination()
@@ -33,7 +36,5 @@ public class LeaderController : AgentController
         Vector3 exitPosition = exitObject.transform.position;
         navMeshAgent.SetDestination(exitPosition);
     }
-
-
     
 }

@@ -12,6 +12,7 @@ TagManager:
   - Follower
   - Explorer
   - PanicStriker
+  - Alarm
   layers:
   - Default
   - TransparentFX

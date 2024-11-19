@@ -171,8 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &248622204975501508
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,8 +347,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &292415387530214869
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,8 +523,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &368518447415290233
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,8 +699,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &710372309735281797
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,8 +875,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &803285397264754568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,8 +1126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3ae85e8935455488e3ff114077dd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &1374330871616343256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,8 +1302,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &1459355663101199388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,8 +1523,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &1723476556334299498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,8 +1699,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58567302a3a860c4e82ed84c4f657e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
   pushForce: 5
 --- !u!1 &1779553801240311053
 GameObject:
@@ -1849,8 +1876,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &2191194027107594188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,8 +2202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &3072945705345825711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,8 +2378,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58567302a3a860c4e82ed84c4f657e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
   pushForce: 5
 --- !u!1 &3102317558835614507
 GameObject:
@@ -2519,8 +2555,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3ae85e8935455488e3ff114077dd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &3120064751403269294
 GameObject:
   m_ObjectHideFlags: 0
@@ -2692,8 +2731,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &3347315165153491297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,8 +2907,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3ae85e8935455488e3ff114077dd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &3399659975318632980
 GameObject:
   m_ObjectHideFlags: 0
@@ -3038,8 +3083,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &3433540420502347149
 GameObject:
   m_ObjectHideFlags: 0
@@ -3211,8 +3259,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58567302a3a860c4e82ed84c4f657e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
   pushForce: 5
 --- !u!1 &3704816728683431054
 GameObject:
@@ -3385,8 +3436,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &3749425754191126659
 GameObject:
   m_ObjectHideFlags: 0
@@ -3558,8 +3612,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &3791665993821519557
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,8 +3788,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58567302a3a860c4e82ed84c4f657e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
   pushForce: 5
 --- !u!1 &3821593131589507108
 GameObject:
@@ -3905,8 +3965,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58567302a3a860c4e82ed84c4f657e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
   pushForce: 5
 --- !u!1 &4069813480002588502
 GameObject:
@@ -4184,8 +4247,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &4192274116053467340
 GameObject:
   m_ObjectHideFlags: 0
@@ -4357,8 +4423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &4504110441376336685
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,8 +4599,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &4994076502470147007
 GameObject:
   m_ObjectHideFlags: 0
@@ -4703,8 +4775,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &5386930900981628005
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,8 +5056,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &5753925715715274448
 GameObject:
   m_ObjectHideFlags: 0
@@ -5154,8 +5232,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &6324830315011907627
 GameObject:
   m_ObjectHideFlags: 0
@@ -5327,8 +5408,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &6481978016665035341
 GameObject:
   m_ObjectHideFlags: 0
@@ -5500,8 +5584,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &6492697886357845890
 GameObject:
   m_ObjectHideFlags: 0
@@ -5916,8 +6003,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58567302a3a860c4e82ed84c4f657e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
   pushForce: 5
 --- !u!1 &6957836356161900019
 GameObject:
@@ -6090,8 +6180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3ae85e8935455488e3ff114077dd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &7202339390042361409
 GameObject:
   m_ObjectHideFlags: 0
@@ -6263,8 +6356,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &7251576376912087979
 GameObject:
   m_ObjectHideFlags: 0
@@ -6436,8 +6532,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &7275754069000159626
 GameObject:
   m_ObjectHideFlags: 0
@@ -6609,8 +6708,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58567302a3a860c4e82ed84c4f657e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
   pushForce: 5
 --- !u!1 &7322880460961482380
 GameObject:
@@ -6783,8 +6885,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &7396147737400764083
 GameObject:
   m_ObjectHideFlags: 0
@@ -6956,8 +7061,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &7508806107337928835
 GameObject:
   m_ObjectHideFlags: 0
@@ -7129,8 +7237,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &7516485110725286220
 GameObject:
   m_ObjectHideFlags: 0
@@ -7302,8 +7413,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58567302a3a860c4e82ed84c4f657e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
   pushForce: 5
 --- !u!1 &7633348079048294718
 GameObject:
@@ -7476,8 +7590,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58567302a3a860c4e82ed84c4f657e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
   pushForce: 5
 --- !u!1 &7857611116654413967
 GameObject:
@@ -7611,7 +7728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6301878967251664127}
   m_Layer: 0
-  m_Name: UTN_ENV
+  m_Name: InitialMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7914,8 +8031,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &8252691744914540606
 GameObject:
   m_ObjectHideFlags: 0
@@ -8087,8 +8207,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &8586598252591757693
 GameObject:
   m_ObjectHideFlags: 0
@@ -8260,8 +8383,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &8635814518396426428
 GameObject:
   m_ObjectHideFlags: 0
@@ -8433,8 +8559,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db388351b37154fb05a1b03b575323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &8679902763765716474
 GameObject:
   m_ObjectHideFlags: 0
@@ -8606,8 +8735,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457f168e54a95094eab6edf79267164e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 15
+  minWanderRadius: 5
+  maxWanderRadius: 10
   health: 1000
+  hearingRadius: 20
+  fieldOfViewAngle: 110
 --- !u!1 &8720228627530531197
 GameObject:
   m_ObjectHideFlags: 0
@@ -8677,6 +8809,14 @@ PrefabInstance:
       value: SafelyPlace
       objectReference: {fileID: 0}
     - target: {fileID: 5869165160347787784, guid: 05b831227aaf2244897fe0c4bbcfebd5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869165160347787784, guid: 05b831227aaf2244897fe0c4bbcfebd5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869165160347787784, guid: 05b831227aaf2244897fe0c4bbcfebd5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.988132
       objectReference: {fileID: 0}
@@ -8716,6 +8856,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7411075237351363487, guid: 05b831227aaf2244897fe0c4bbcfebd5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

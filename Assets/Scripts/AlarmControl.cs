@@ -6,22 +6,48 @@ using static UnityEngine.GraphicsBuffer;
 public class AlarmControl : MonoBehaviour
 {
     private Transform firetarget;
-    public Color fireDetectedColor = Color.red;
+    public Color fireDetectedColor;
     private Renderer objectRenderer;
+    private AudioSource alarmAudioSource;
+    private bool isActive = false;
+    public float detectionRadius = 30;
 
     // Start is called before the first frame update
     void Start()
     {
         objectRenderer = GetComponent<Renderer>();
+        alarmAudioSource = GetComponent<AudioSource>();
+        if (alarmAudioSource != null)
+        {
+            alarmAudioSource.loop = true;
+            alarmAudioSource.spatialBlend = 1.0f; // Make the sound 3D
+            alarmAudioSource.Stop(); // Ensure the alarm is not playing at the start
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsFireNearby())
+        if (!isActive)
         {
-            ChangeColor(fireDetectedColor);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius);
+            foreach (var collider in colliders)
+            {
+                if (collider.CompareTag("Fire"))
+                {
+                    ActivateAlarm();
+                    ChangeColor(fireDetectedColor);
+                    isActive = true;
+                    break;
+                }
+            }
         }
+    }
+
+    public void ActivateAlarm()
+    {
+        Debug.Log("¡Alarma activada!");
+        GetComponent<AudioSource>().Play();
     }
 
     private bool IsFireNearby()

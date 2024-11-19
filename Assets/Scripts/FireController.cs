@@ -41,7 +41,7 @@ public class FireController : MonoBehaviour
             if (agentController != null)
             {
                 agentController.TakeDamage(25f);
-                Debug.Log("colisiona " + agentController.health);
+                //Debug.Log("colisiona " + agentController.health);
             }
         }
     }

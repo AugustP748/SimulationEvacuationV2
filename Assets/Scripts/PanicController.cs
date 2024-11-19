@@ -5,37 +5,35 @@ using UnityEngine.AI;
 
 public class PanicController : AgentController
 {
-    private NavMeshAgent navMeshAgent;
+    //private NavMeshAgent navMeshAgent;
     public float pushForce = 5f; // Fuerza de empuje
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        SetRandomDestination();
-    }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-        searchTarget("Exit", 2f);
+    }
 
-        // Moverse de forma aleatoria si no se encuentra el objeto "Exit" o hay obstáculos
+    public override void PerformBehavior()
+    {
+        // Seguir al líder o dirigirse a una salida
+        //Debug.Log($"{gameObject.name} está histérico...");
+        // Agrega aquí lógica específica para el movimiento del seguidor
         if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
         {
             SetRandomDestination();
         }
+        searchTarget("Exit", 2f);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
-        if (collision.gameObject.CompareTag("Agent") || collision.gameObject.CompareTag("Agent"))
+        if (other.gameObject.CompareTag("Leader") || other.gameObject.CompareTag("PanicStriker") || other.gameObject.CompareTag("Explorer") || other.gameObject.CompareTag("Follower"))
         {
-            Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                Vector3 pushDirection = collision.transform.position - transform.position;
+                Vector3 pushDirection = other.transform.position - transform.position;
                 pushDirection.y = 0; // No empujar hacia arriba o abajo
                 rb.AddForce(pushDirection.normalized * pushForce, ForceMode.Impulse);
 
