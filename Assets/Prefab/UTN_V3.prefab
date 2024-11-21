@@ -8174,6 +8174,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2191194027107594188, guid: 657a8201b645d944eac9caf87ccae333, type: 3}
+      propertyPath: m_Name
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 2370818427019412097, guid: 657a8201b645d944eac9caf87ccae333, type: 3}
       propertyPath: m_Size.z
       value: 0.2
@@ -8540,7 +8544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7913871861553623600, guid: 657a8201b645d944eac9caf87ccae333, type: 3}
       propertyPath: m_Name
-      value: UNT_V2
+      value: UTN_V3
       objectReference: {fileID: 0}
     - target: {fileID: 8021812305849537288, guid: 657a8201b645d944eac9caf87ccae333, type: 3}
       propertyPath: m_LocalScale.y

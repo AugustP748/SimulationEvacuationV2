@@ -16,11 +16,11 @@ public class LeaderController : AgentController
     public override void PerformBehavior()
     {
 
-        // Seguir al líder o dirigirse a una salida
+        //Seguir al líder o dirigirse a una salida
         //Debug.Log($"{gameObject.name} está liderando o saliendo del edificio...");
-        // Agrega aquí lógica específica para el movimiento del seguidor
+        //Agrega aquí lógica específica para el movimiento del seguidor
 
-        exitObject = GameObject.FindGameObjectWithTag("Exit");
+       exitObject = GameObject.FindGameObjectWithTag("Exit");
         if (exitObject != null)
         {
             setExitDestination();

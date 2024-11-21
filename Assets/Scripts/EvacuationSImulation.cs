@@ -4,9 +4,10 @@ using UnityEngine;
 public class EvacuationSImulation : MonoBehaviour
 {
     public GameObject firePrefab;
+    //[SerializeField] private StartButton startButton;
 
     // Start is called before the first frame update
-    void Start()
+    public void StartSimulation()
     {
         StartCoroutine(SpawnFire());
     }

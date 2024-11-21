@@ -13,6 +13,9 @@ public abstract class AgentController : MonoBehaviour
     protected bool hasHeardAlarm = false;
     public float hearingRadius = 20f;
     public float fieldOfViewAngle = 110f; // Campo de visión (en grados)
+
+    [SerializeField] private ContadorSalvadas salvadas;
+    [SerializeField] private ContadorMuertes muertes;
     // Reference to the Agents object
 
     // Start is called before the first frame update
@@ -145,6 +148,7 @@ public abstract class AgentController : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            muertes.IncrementarMuertes();
             Destroy(gameObject);
         }
     }
@@ -153,6 +157,7 @@ public abstract class AgentController : MonoBehaviour
     {
         if (other.CompareTag("Exit"))
         {
+            salvadas.IncrementarSalvadas();
             Destroy(gameObject);
         }
     }
