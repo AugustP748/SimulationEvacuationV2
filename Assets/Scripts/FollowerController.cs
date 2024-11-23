@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class FollowerController : AgentController
 {
-
+    public float detectionRadius = 10f; // Rango en el que puede detectar líderes
+    public LayerMask leaderLayer;       // Capa para identificar líderes
     // Update is called once per frame
     protected override void Update()
     {
@@ -14,15 +15,33 @@ public class FollowerController : AgentController
 
     public override void PerformBehavior()
     {
-        // Seguir al líder o dirigirse a una salida
-        //Debug.Log($"{gameObject.name} está siguiendo a un líder o saliendo del edificio...");
-        // Agrega aquí lógica específica para el movimiento del seguidor
-        //searchTarget("Exit", 2f)
-        searchTarget("Leader", 0f);
-        // Moverse de forma aleatoria si no se encuentra el objeto "Leader" o hay obstáculos
-        if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
+
+        if (CheckForExit())
         {
-            SetRandomDestination();
+            return; // Si ve una salida, ya no busca líderes ni se mueve aleatoriamente
         }
+
+        if (FollowLeader())
+        {
+            return; // Si encuentra un líder, lo sigue y no se mueve aleatoriamente
+        }
+        // Si no hay líder, se mueve de forma aleatoria
+        MoveToRandomDestination();
     }
+
+    private bool FollowLeader()
+    {
+        Collider[] leaders = Physics.OverlapSphere(transform.position, detectionRadius, leaderLayer);
+        if (leaders.Length > 0)
+        {
+            // Si encuentra un líder, se dirige hacia él
+            navMeshAgent.SetDestination(leaders[0].transform.position);
+            //Debug.Log($"{gameObject.name} está siguiendo a {leaders[0].gameObject.name}");
+            return true;
+        }
+        return false;
+    }
+
+    
+
 }

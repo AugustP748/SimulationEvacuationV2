@@ -13,6 +13,7 @@ TagManager:
   - Explorer
   - PanicStriker
   - Alarm
+  - ExitSignal
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Water
   - UI
   - Fire
-  - 
-  - 
+  - leaderLayer
+  - exitLayer
   - 
   - 
   - 

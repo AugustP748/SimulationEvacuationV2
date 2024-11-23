@@ -20,15 +20,15 @@ public class LeaderController : AgentController
         //Debug.Log($"{gameObject.name} está liderando o saliendo del edificio...");
         //Agrega aquí lógica específica para el movimiento del seguidor
 
-       exitObject = GameObject.FindGameObjectWithTag("Exit");
-        if (exitObject != null)
-        {
-            setExitDestination();
-        }
-        else
-        {
-            Debug.LogError("No se encontró un objeto con la etiqueta 'exit'");
-        }
+       //exitObject = GameObject.FindGameObjectWithTag("Exit");
+       // if (exitObject != null)
+       // {
+       //     setExitDestination();
+       // }
+       // else
+       // {
+       //     Debug.LogError("No se encontró un objeto con la etiqueta 'exit'");
+       // }
     }
 
     void setExitDestination()

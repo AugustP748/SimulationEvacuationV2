@@ -18,11 +18,12 @@ public class ExplorerAgent : AgentController
         //Debug.Log($"{gameObject.name} está explorando buscando una salida...");
         // Agrega aquí lógica específica para el movimiento del seguidor
         // Moverse de forma aleatoria si no se encuentra el objeto "Exit" o hay obstáculos
-        if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
-        {
-            SetRandomDestination();
-        }
-        searchTarget("Exit", 2f);
+
+        //if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
+        //{
+        //    SetRandomDestination();
+        //}
+        //searchTarget("Exit", 2f);
     }
 
 }
