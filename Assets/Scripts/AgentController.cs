@@ -14,9 +14,12 @@ public abstract class AgentController : MonoBehaviour
     public float hearingRadius = 20f;
     public float fieldOfViewAngle = 110f; // Campo de visión (en grados)
     public LayerMask exitLayer;
+    private bool isSearching = true;      // Controla si el agente está buscando un destino
 
     [SerializeField] private ContadorSalvadas salvadas;
     [SerializeField] private ContadorMuertes muertes;
+
+
     // Reference to the Agents object
 
     // Start is called before the first frame update
@@ -24,22 +27,40 @@ public abstract class AgentController : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         wanderRadius = Random.Range(minWanderRadius, maxWanderRadius);
-        SetRandomDestination();
+        //SetRandomDestination();
+        //navMeshAgent.speed = 20f;
 
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
         if (!hasHeardAlarm)
         {
-            MoveToRandomDestination(); // Moverse aleatoriamente
-            CheckForAlarm(); // Detectar si hay una alarma sonando
-            CheckForVision(); // Verificación de visión (si aplica)
+            CheckForAlarm();
+            CheckForVision();
+            HandleWandering(); // Añadimos el comportamiento de búsqueda y movimiento
         }
         else
         {
-            PerformBehavior(); // Comportamiento específico según el tipo de agente
+            PerformBehavior();
+        }
+    }
+
+
+    private void HandleWandering()
+    {
+        if (isSearching)
+        {
+            SetRandomDestination(); // O encuentra otro punto aleatorio
+        }
+        else
+        {
+            // Verificar si llegó al destino
+            if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+            {
+                isSearching = true; // Reanuda el raycasting
+                SetRandomDestination(); // O encuentra otro punto aleatorio
+            }
         }
     }
 
@@ -98,45 +119,7 @@ public abstract class AgentController : MonoBehaviour
         return false;
     }
 
-    //protected void searchTarget(string targetTag, float value)
-    //{
-    //    NavMeshAgent agent = GetComponent<NavMeshAgent>();
-    //    // Buscar el objeto con el tag "Leader"
-    //    GameObject leaderObject = GameObject.FindGameObjectWithTag(targetTag);
-    //    if (leaderObject != null)
-    //    {
-    //        target = leaderObject.transform;
-    //        // Verificar si no hay obstáculos entre el agente y el objeto "Leader"
-    //        if (HasLineOfSight(target))
-    //        {
-    //            if (targetTag == "Fire")
-    //            {
-    //                // Aumentar la velocidad del agente
-    //                agent.speed = value;
-
-    //            }
-    //            else
-    //            {
-    //                agent.SetDestination(target.position);
-    //                agent.stoppingDistance = value; // Corrected line
-    //            }
-    //            return;
-    //        }
-    //    }
-    //}
-
-    //protected bool HasLineOfSight(Transform target)
-    //{
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(transform.position, (target.position - transform.position).normalized, out hit))
-    //    {
-    //        if (hit.transform == target)
-    //        {
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
+ 
 
     protected void MoveToRandomDestination()
     {
@@ -148,9 +131,18 @@ public abstract class AgentController : MonoBehaviour
 
     protected void SetRandomDestination()
     {
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-        agent.SetDestination(newPos);
+        // Genera un punto aleatorio en un rango
+        Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
+        randomDirection += transform.position; // Translada el punto aleatorio al área del agente
+
+        // Asegura que el punto está en el NavMesh
+        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, wanderRadius, NavMesh.AllAreas))
+        {
+            navMeshAgent.SetDestination(hit.position);
+        }
+        //NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        //Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
+        //agent.SetDestination(newPos);
     }
 
     private static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
@@ -182,3 +174,45 @@ public abstract class AgentController : MonoBehaviour
 
     public abstract void PerformBehavior(); // Método abstracto para sobrescribir en las clases hijas
 }
+
+
+
+//protected void searchTarget(string targetTag, float value)
+//{
+//    NavMeshAgent agent = GetComponent<NavMeshAgent>();
+//    // Buscar el objeto con el tag "Leader"
+//    GameObject leaderObject = GameObject.FindGameObjectWithTag(targetTag);
+//    if (leaderObject != null)
+//    {
+//        target = leaderObject.transform;
+//        // Verificar si no hay obstáculos entre el agente y el objeto "Leader"
+//        if (HasLineOfSight(target))
+//        {
+//            if (targetTag == "Fire")
+//            {
+//                // Aumentar la velocidad del agente
+//                agent.speed = value;
+
+//            }
+//            else
+//            {
+//                agent.SetDestination(target.position);
+//                agent.stoppingDistance = value; // Corrected line
+//            }
+//            return;
+//        }
+//    }
+//}
+
+//protected bool HasLineOfSight(Transform target)
+//{
+//    RaycastHit hit;
+//    if (Physics.Raycast(transform.position, (target.position - transform.position).normalized, out hit))
+//    {
+//        if (hit.transform == target)
+//        {
+//            return true;
+//        }
+//    }
+//    return false;
+//}

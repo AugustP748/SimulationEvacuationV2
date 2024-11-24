@@ -13,11 +13,6 @@ public class ContadorMuertes : MonoBehaviour
         textMesh.text = "Muertes: " + muertes;
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void IncrementarMuertes()
     {
         muertes++;

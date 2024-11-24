@@ -14,10 +14,6 @@ public class ContadorSalvadas : MonoBehaviour
         textMesh.text = "Gente salvada: " + salvadas;
     }
 
-    private void Update()
-    {
-    }
-
     public void IncrementarSalvadas()
     {
         salvadas++;

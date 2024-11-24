@@ -46,7 +46,8 @@ public class AlarmControl : MonoBehaviour
 
     public void ActivateAlarm()
     {
-        Debug.Log("¡Alarma activada!");
+        //Debug.Log("¡Alarma activada!");
+
         GetComponent<AudioSource>().Play();
     }
 

@@ -10,6 +10,7 @@ public class Door : MonoBehaviour
     private NavMeshObstacle Obstacle;
 
     public bool IsOpen = false;
+
     [SerializeField]
     private float Speed = 1f;
     [SerializeField]
