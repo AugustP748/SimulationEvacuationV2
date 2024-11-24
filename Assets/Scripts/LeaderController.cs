@@ -10,8 +10,8 @@ public class LeaderController : AgentController
     protected int currentExitIndex = 0;
     public float agentSpeed = 20f; // Added agent speed variable
 
-    //private float raycastDistance = 30f;
-    private float rayLengthLeader = 30f; // Longitud del Raycast
+    
+    private float rayLengthLeader = 120f; // Longitud del Raycast
     private int numberOfRays = 10;  // Número de rayos en abanico
     private float spreadAngle = 20f; // Ángulo del abanico en grados
     private float upwardAngle = 190f; // Ángulo hacia arriba en grados
@@ -38,33 +38,53 @@ public class LeaderController : AgentController
         {
             Debug.LogError("No se encontro un objeto con la etiqueta 'exit'");
         }
-        
-        //if (targetExit != null)
-        //{
-        //    //Debug.Log("Señal vista!");
-        //    navMeshAgent.SetDestination(targetExit.position);
-        //}
-
-        //RaycastHit hit;
-        //if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
-        //{
-        //    if (hit.collider.CompareTag("ExitSignal"))
-        //    {
-        //        Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.green);
-        //        setExitDestination();
-        //    }
-        //    
-        //}
-        //else
-        //{
-        //    Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.red);
-        //    MoveToRandomDestination();
-        //}
-
-
     }
 
-    
+
+    void setExitDestination()
+    {
+        Vector3 exitPosition = exitObject.transform.position;
+        navMeshAgent.SetDestination(exitPosition);
+    }
+
+    public void Perform360Raycast()
+    {
+        float minDistance = Mathf.Infinity;
+        int numberOfRays = 36;
+        float angleIncrement = 360f / numberOfRays;
+        float upwardAngle = 110f;
+        float raycastDistance = 30f;
+
+        for (int i = 0; i < numberOfRays; i++)
+        {
+            float angle = i * angleIncrement;
+            Quaternion rotation = Quaternion.Euler(upwardAngle, angle, 0f);
+            Vector3 direction = rotation * (transform.forward + Vector3.up * 1.14f) * -1;
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, direction, out hit, rayLengthLeader))
+            {
+                // Verificar si es un cartel (usando tanto layer como tag)
+                bool isExitSign = ((1 << hit.collider.gameObject.layer) & exitLayer) != 0
+                                 && hit.collider.CompareTag("ExitSignal");
+
+                if (isExitSign)
+                {
+                    float distance = hit.distance;
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        Debug.DrawRay(transform.position, direction * hit.distance, Color.green);
+                    }
+                }
+            }
+
+        }
+    }
+
+
+
+
 
 
     Transform FindExitUsingRaycast()
@@ -107,83 +127,82 @@ public class LeaderController : AgentController
 
         return closestExit;
     }
-
-    //Transform FindExitUsingRaycast()
-    //{
-    //    Transform closestExit = null;
-    //    float minDistance = Mathf.Infinity;
-
-    //    // Genera rayos en abanico horizontal con inclinación hacia arriba
-    //    for (int i = 0; i < numberOfRays; i++)
-    //    {
-    //        float horizontalAngle = -spreadAngle / 2 + (spreadAngle / (numberOfRays - 1)) * i;
-    //        // Inclinar el rayo hacia arriba
-    //        Vector3 direction = Quaternion.Euler(upwardAngle, horizontalAngle, 0) * transform.forward;
-
-    //        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, rayLength, exitLayer))
-    //        {
-    //            float distance = hit.distance;
-    //            if (distance < minDistance)
-    //            {
-    //                minDistance = distance;
-    //                closestExit = hit.transform;
-    //                Debug.DrawRay(transform.position, direction * rayLength, Color.green);
-    //            }
-    //        }
-
-    //        // Debug Ray (opcional para visualizar los rayos en la escena)
-    //        Debug.DrawRay(transform.position, direction * rayLength, Color.red);
-    //    }
-
-    //    return closestExit;
-    //}
-
-    //void setExitDestination()
-    //{
-    //    if (exitSignObjects != null && exitSignObjects.Length > 0)
-    //    {
-    //        Vector3 exitPosition = exitSignObjects[currentExitIndex].transform.position;
-    //        navMeshAgent.SetDestination(exitPosition);
-    //        navMeshAgent.speed = agentSpeed; // Set agent speed
-    //        currentExitIndex = (currentExitIndex + 1) % exitSignObjects.Length;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("No exit sign objects found.");
-    //    }
-    //}
-
-    void setExitDestination()
-    {
-        Vector3 exitPosition = exitObject.transform.position;
-        navMeshAgent.SetDestination(exitPosition);
-    }
-
-    public void Perform360Raycast()
-    {
-        float minDistance = Mathf.Infinity;
-        float raycastDistance = 10f;
-        int numberOfRays = 36;
-        float angleIncrement = 360f / numberOfRays;
-        float upwardAngle = 110f; // Added upward angle of 30 degrees
-
-        for (int i = 0; i < numberOfRays; i++)
-        {
-            float angle = i * angleIncrement;
-            Quaternion rotation = Quaternion.Euler(upwardAngle, angle, 0f); // Added upward angle to rotation
-            Vector3 direction = rotation * (transform.forward + Vector3.up * 1.14f) * -1;
-
-            if (Physics.Raycast(transform.position, direction, out RaycastHit hit, rayLengthLeader, exitLayer))
-            {
-                float distance = hit.distance;
-                if (distance < minDistance)
-                {
-                    minDistance = distance;
-                    Debug.DrawRay(transform.position, direction * rayLengthLeader, Color.green);
-                }
-            }
-
-            //Debug.DrawRay(transform.position, direction * rayLengthLeader, Color.red);
-        }
-    }
 }
+
+
+
+
+
+
+
+
+
+//if (targetExit != null)
+//{
+//    //Debug.Log("Señal vista!");
+//    navMeshAgent.SetDestination(targetExit.position);
+//}
+
+//RaycastHit hit;
+//if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
+//{
+//    if (hit.collider.CompareTag("ExitSignal"))
+//    {
+//        Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.green);
+//        setExitDestination();
+//    }
+//    
+//}
+//else
+//{
+//    Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.red);
+//    MoveToRandomDestination();
+//}
+
+
+
+
+//Transform FindExitUsingRaycast()
+//{
+//    Transform closestExit = null;
+//    float minDistance = Mathf.Infinity;
+
+//    // Genera rayos en abanico horizontal con inclinación hacia arriba
+//    for (int i = 0; i < numberOfRays; i++)
+//    {
+//        float horizontalAngle = -spreadAngle / 2 + (spreadAngle / (numberOfRays - 1)) * i;
+//        // Inclinar el rayo hacia arriba
+//        Vector3 direction = Quaternion.Euler(upwardAngle, horizontalAngle, 0) * transform.forward;
+
+//        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, rayLength, exitLayer))
+//        {
+//            float distance = hit.distance;
+//            if (distance < minDistance)
+//            {
+//                minDistance = distance;
+//                closestExit = hit.transform;
+//                Debug.DrawRay(transform.position, direction * rayLength, Color.green);
+//            }
+//        }
+
+//        // Debug Ray (opcional para visualizar los rayos en la escena)
+//        Debug.DrawRay(transform.position, direction * rayLength, Color.red);
+//    }
+
+//    return closestExit;
+//}
+
+//void setExitDestination()
+//{
+//    if (exitSignObjects != null && exitSignObjects.Length > 0)
+//    {
+//        Vector3 exitPosition = exitSignObjects[currentExitIndex].transform.position;
+//        navMeshAgent.SetDestination(exitPosition);
+//        navMeshAgent.speed = agentSpeed; // Set agent speed
+//        currentExitIndex = (currentExitIndex + 1) % exitSignObjects.Length;
+//    }
+//    else
+//    {
+//        Debug.LogError("No exit sign objects found.");
+//    }
+//}
