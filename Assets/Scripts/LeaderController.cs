@@ -14,7 +14,7 @@ public class LeaderController : AgentController
     private float rayLengthLeader = 120f; // Longitud del Raycast
     private int numberOfRays = 10;  // Número de rayos en abanico
     private float spreadAngle = 20f; // Ángulo del abanico en grados
-    private float upwardAngle = 190f; // Ángulo hacia arriba en grados
+    //private float upwardAngle = 190f; // Ángulo hacia arriba en grados
     //private float rayHeightOffsetLeader = 4.17f; // Altura desde la que se lanzan los rayos
     //public LayerMask exitLayer; // Capa para identificar los carteles "Exit"
 
@@ -53,7 +53,7 @@ public class LeaderController : AgentController
         int numberOfRays = 36;
         float angleIncrement = 360f / numberOfRays;
         float upwardAngle = 110f;
-        float raycastDistance = 30f;
+        //float raycastDistance = 30f;
 
         for (int i = 0; i < numberOfRays; i++)
         {

@@ -17,5 +17,11 @@ public class ContadorMuertes : MonoBehaviour
     {
         muertes++;
         textMesh.text = "Muertes: " + muertes;
+        GameManager.Instance.RegistrarMuerte();
+    }
+
+    public string ObtenerMuertes()
+    {
+        return muertes.ToString();
     }
 }
