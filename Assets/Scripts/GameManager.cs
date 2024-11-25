@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int Muertes { get; private set; }
     public int Salvados { get; private set; }
     public float TiempoSimulacion { get; private set; }
+    public int AgentCount { get; private set; } // New property for counting objects with tag "Agent"
 
     private bool isPaused = false;
 
@@ -67,5 +68,11 @@ public class GameManager : MonoBehaviour
         Muertes = 0;
         Salvados = 0;
         TiempoSimulacion = 0;
+    }
+
+    private void CountAgents()
+    {
+        GameObject[] agents = GameObject.FindGameObjectsWithTag("Agent");
+        AgentCount = agents.Length;
     }
 }

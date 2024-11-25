@@ -35,7 +35,7 @@ public class FireController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Leader") || other.gameObject.CompareTag("PanicStriker") || other.gameObject.CompareTag("Explorer") || other.gameObject.CompareTag("Follower"))
+        if (other.gameObject.CompareTag("Agent"))
         {
             AgentController agentController = other.gameObject.GetComponent<AgentController>();
             if (agentController != null)

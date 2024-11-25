@@ -40,9 +40,15 @@ public class PanicController : AgentController
         NavMeshAgent agentNavMesh = agent.GetComponent<NavMeshAgent>();
         if (agentNavMesh != null)
         {
-            agentNavMesh.enabled = false; // Disable NavMeshAgent to simulate fall
-            yield return new WaitForSeconds(3f); // Wait for 3 seconds
-            agentNavMesh.enabled = true; // Re-enable NavMeshAgent to continue activity
+            if (agentNavMesh.gameObject.activeInHierarchy) // Check if the object is active in the hierarchy
+            {
+                agentNavMesh.enabled = false; // Disable NavMeshAgent to simulate fall
+                yield return new WaitForSeconds(3f); // Wait for 3 seconds
+                if (agentNavMesh != null) // Check if the object is still not null
+                {
+                    agentNavMesh.enabled = true; // Re-enable NavMeshAgent to continue activity
+                }
+            }
         }
     }
 }
