@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class PanicController : AgentController
 {
-    //private NavMeshAgent navMeshAgent;
     public float pushForce = 5f; // Fuerza de empuje
     private bool behaviorPerformed = false; // Flag to check if PerformBehavior has been executed
 
@@ -18,55 +17,33 @@ public class PanicController : AgentController
     public override void PerformBehavior()
     {
         behaviorPerformed = true; // Set the flag to true when PerformBehavior is executed
-                                  // Seguir al líder o dirigirse a una salida
-                                  //Debug.Log($"{gameObject.name} está histérico...");
-                                  // Agrega aquí lógica específica para el movimiento del seguidor
-        //MoveToRandomDestination();
-
-
-        //if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
-        //{
-        //    SetRandomDestination();
-        //}
-        //searchTarget("Exit", 2f);
+        MoveToRandomDestination();
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (!behaviorPerformed) return; // Only execute if PerformBehavior has been called
-
-        if (other.gameObject.CompareTag("Follower") || other.gameObject.CompareTag("Explorer") ||
-            other.gameObject.CompareTag("Leader") || other.gameObject.CompareTag("PanicStriker"))
+        if (collision.gameObject.CompareTag("Agent"))
         {
-            AgentController otherAgent = other.gameObject.GetComponent<AgentController>();
-            ApplyKnockback(otherAgent, other.contacts[0].point);
-            Debug.Log($"{gameObject.name} hizo caer a {other.gameObject.name}");
-        }
-    }
-
-    private void ApplyKnockback(AgentController otherAgent, Vector3 collisionPoint)
-    {
-        // Agregar fuerza al agente afectado
-        Rigidbody rb = otherAgent.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            Vector3 knockbackDirection = (otherAgent.transform.position - collisionPoint).normalized;
-            rb.AddForce(knockbackDirection * 10f, ForceMode.Impulse);
-
-            // Opcional: Desactivar temporalmente el NavMeshAgent del agente afectado para simular "caída"
-            NavMeshAgent agent = otherAgent.GetComponent<NavMeshAgent>();
-            if (agent != null)
+            Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+            if (rb != null)
             {
-                agent.enabled = false;
-                StartCoroutine(ReenableNavMeshAgent(agent, 3f)); // Reactivar después de 2 segundos
+                Vector3 pushDirection = collision.transform.position - transform.position;
+                pushDirection.y = 0; // Ensure the push is horizontal
+                rb.AddForce(pushDirection.normalized * pushForce, ForceMode.Impulse);
+                StartCoroutine(HandleAgentFall(collision.gameObject));
             }
         }
     }
 
-    private System.Collections.IEnumerator ReenableNavMeshAgent(NavMeshAgent agent, float delay)
+    private IEnumerator HandleAgentFall(GameObject agent)
     {
-        yield return new WaitForSeconds(delay);
-        agent.enabled = true;
+        NavMeshAgent agentNavMesh = agent.GetComponent<NavMeshAgent>();
+        if (agentNavMesh != null)
+        {
+            agentNavMesh.enabled = false; // Disable NavMeshAgent to simulate fall
+            yield return new WaitForSeconds(3f); // Wait for 3 seconds
+            agentNavMesh.enabled = true; // Re-enable NavMeshAgent to continue activity
+        }
     }
 }
 

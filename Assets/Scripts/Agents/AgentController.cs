@@ -27,6 +27,7 @@ public abstract class AgentController : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         wanderRadius = Random.Range(minWanderRadius, maxWanderRadius);
+        navMeshAgent.radius = 0.3f;
         //SetRandomDestination();
         //navMeshAgent.speed = 20f;
 
@@ -38,7 +39,9 @@ public abstract class AgentController : MonoBehaviour
         {
             CheckForAlarm();
             CheckForVision();
-            HandleWandering(); // Añadimos el comportamiento de búsqueda y movimiento
+            //HandleWandering(); // Añadimos el comportamiento de búsqueda y movimiento
+            MoveToRandomDestination();
+            EnsureAgentOnNavMesh();
         }
         else
         {
@@ -123,10 +126,14 @@ public abstract class AgentController : MonoBehaviour
 
     protected void MoveToRandomDestination()
     {
-        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance && !navMeshAgent.pathPending)
+        if(navMeshAgent.isOnNavMesh)
         {
-            SetRandomDestination(); // Generar un nuevo destino cuando llega al anterior
+            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance && !navMeshAgent.pathPending)
+            {
+                SetRandomDestination(); // Generar un nuevo destino cuando llega al anterior
+            }
         }
+        
     }
 
     protected void SetRandomDestination()
@@ -169,6 +176,22 @@ public abstract class AgentController : MonoBehaviour
         {
             salvadas.IncrementarSalvadas();
             Destroy(gameObject);
+        }
+    }
+
+    void EnsureAgentOnNavMesh()
+    {
+        if (!navMeshAgent.isOnNavMesh)
+        {
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(navMeshAgent.transform.position, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                navMeshAgent.Warp(hit.position); // Mueve el agente a una posición válida
+            }
+            else
+            {
+                Debug.LogError("No se encontró un NavMesh cercano para el agente.");
+            }
         }
     }
 
