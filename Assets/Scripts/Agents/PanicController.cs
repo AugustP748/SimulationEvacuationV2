@@ -22,17 +22,21 @@ public class PanicController : AgentController
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Agent"))
+        if (hasHeardAlarm)
         {
-            Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-            if (rb != null)
+            if (collision.gameObject.CompareTag("Agent"))
             {
-                Vector3 pushDirection = collision.transform.position - transform.position;
-                pushDirection.y = 0; // Ensure the push is horizontal
-                rb.AddForce(pushDirection.normalized * pushForce, ForceMode.Impulse);
-                StartCoroutine(HandleAgentFall(collision.gameObject));
+                Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    Vector3 pushDirection = collision.transform.position - transform.position;
+                    pushDirection.y = 0; // Ensure the push is horizontal
+                    rb.AddForce(pushDirection.normalized * pushForce, ForceMode.Impulse);
+                    StartCoroutine(HandleAgentFall(collision.gameObject));
+                }
             }
         }
+        
     }
 
     private IEnumerator HandleAgentFall(GameObject agent)
