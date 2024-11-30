@@ -1,18 +1,37 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EvacuationSImulation : MonoBehaviour
 {
+    public GameObject bigExplosionPrefab;
+    public NavMeshAgent agent;
     public GameObject firePrefab;
     //[SerializeField] private StartButton startButton;
 
     // Start is called before the first frame update
     public void StartSimulation()
     {
-        StartCoroutine(SpawnFire());
+        SpawnBigExplosion();
+        //StartCoroutine(SpawnFire());
     }
 
-    IEnumerator SpawnFire()
+    public void SpawnBigExplosion()
+    {
+        Vector3 randomPosition = GetRandomNavMeshPosition();
+        Instantiate(bigExplosionPrefab, randomPosition, Quaternion.identity);
+    }
+
+    Vector3 GetRandomNavMeshPosition()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * 50;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, 50, 1);
+        return hit.position;
+    }
+
+IEnumerator SpawnFire()
     {
         yield return new WaitForSeconds(1);
         Vector3 firePosition = GetRandomFirePosition();
@@ -79,5 +98,9 @@ public class EvacuationSImulation : MonoBehaviour
     void Update()
     {
 
+    }
+    void Start()
+    {
+       
     }
 }
