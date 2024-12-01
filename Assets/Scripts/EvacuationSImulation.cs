@@ -20,6 +20,7 @@ public class EvacuationSImulation : MonoBehaviour
     {
         Vector3 randomPosition = GetRandomNavMeshPosition();
         Instantiate(bigExplosionPrefab, randomPosition, Quaternion.identity);
+        Instantiate(firePrefab, randomPosition, Quaternion.identity); // Spawning WildFire at the same position
     }
 
     Vector3 GetRandomNavMeshPosition()
@@ -28,7 +29,7 @@ public class EvacuationSImulation : MonoBehaviour
         randomDirection += transform.position;
         NavMeshHit hit;
         NavMesh.SamplePosition(randomDirection, out hit, 50, 1);
-        return hit.position;
+        return new Vector3(hit.position.x, 2.84f, hit.position.z);
     }
 
 IEnumerator SpawnFire()

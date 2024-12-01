@@ -42757,6 +42757,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2128013977421018169, guid: 657a8201b645d944eac9caf87ccae333, type: 3}
+      propertyPath: firePrefab
+      value: 
+      objectReference: {fileID: 1956197547661106, guid: 0a12532ddfbfabd4d87624e9f39b3531, type: 3}
+    - target: {fileID: 2128013977421018169, guid: 657a8201b645d944eac9caf87ccae333, type: 3}
       propertyPath: bigExplosionPrefab
       value: 
       objectReference: {fileID: 1121192042590650, guid: 36801e8a094b67b4291873101563b0f1, type: 3}
