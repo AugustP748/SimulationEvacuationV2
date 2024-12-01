@@ -5,8 +5,11 @@ using UnityEngine.AI;
 public class EvacuationSImulation : MonoBehaviour
 {
     public GameObject bigExplosionPrefab;
-    public NavMeshAgent agent;
     public GameObject firePrefab;
+    public GameObject leaderPrefab;
+    public GameObject followerPrefab;
+    public GameObject explorerPrefab;
+    public GameObject panicStrickerPrefab;
     //[SerializeField] private StartButton startButton;
 
     // Start is called before the first frame update
@@ -16,8 +19,53 @@ public class EvacuationSImulation : MonoBehaviour
         //StartCoroutine(SpawnFire());
     }
 
+    public void SpawnAgents(int cantAgents)
+    {
+        for (int i = 0; i < cantAgents; i++)
+        {
+            float randomValue = Random.value;
+            GameObject agentPrefab;
+
+            if (randomValue < 0.2f) // 20% chance for leader
+            {
+                agentPrefab = leaderPrefab;
+            }
+            else if (randomValue < 0.7f) // 50% chance for follower
+            {
+                agentPrefab = followerPrefab;
+            }
+            else if (randomValue < 0.9f) // 20% chance for explorer
+            {
+                agentPrefab = explorerPrefab;
+            }
+            else // 10% chance for panic stricker
+            {
+                agentPrefab = panicStrickerPrefab;
+            }
+
+            Vector3 randomPosition = GetRandomNavMeshPosition();
+            randomPosition.y = -0.8f;
+
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPosition, out hit, 1f, NavMesh.AllAreas))
+            {
+                Instantiate(agentPrefab, hit.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogWarning("Failed to create agent because it is not close enough to the NavMesh");
+            }
+        }
+    }
+
     public void SpawnBigExplosion()
     {
+        StartCoroutine(SpawnBigExplosionDelayed());
+    }
+
+    IEnumerator SpawnBigExplosionDelayed()
+    {
+        yield return new WaitForSeconds(5);
         Vector3 randomPosition = GetRandomNavMeshPosition();
         Instantiate(bigExplosionPrefab, randomPosition, Quaternion.identity);
         Instantiate(firePrefab, randomPosition, Quaternion.identity); // Spawning WildFire at the same position
@@ -32,7 +80,7 @@ public class EvacuationSImulation : MonoBehaviour
         return new Vector3(hit.position.x, 2.84f, hit.position.z);
     }
 
-IEnumerator SpawnFire()
+    IEnumerator SpawnFire()
     {
         yield return new WaitForSeconds(1);
         Vector3 firePosition = GetRandomFirePosition();
@@ -102,6 +150,6 @@ IEnumerator SpawnFire()
     }
     void Start()
     {
-       
+
     }
 }

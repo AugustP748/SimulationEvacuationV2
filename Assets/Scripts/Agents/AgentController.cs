@@ -16,6 +16,11 @@ public abstract class AgentController : MonoBehaviour
     public LayerMask exitLayer;
     private bool isSearching = true;      // Controla si el agente está buscando un destino
 
+    protected Material agentMaterial;
+
+
+    //public Animator animator;
+
     [SerializeField] private ContadorSalvadas salvadas;
     [SerializeField] private ContadorMuertes muertes;
 
@@ -31,6 +36,9 @@ public abstract class AgentController : MonoBehaviour
         //SetRandomDestination();
         //navMeshAgent.speed = 20f;
 
+        agentMaterial = GetComponent<Renderer>().material;
+        agentMaterial.color = Color.gray;
+
     }
 
     protected virtual void Update()
@@ -42,6 +50,27 @@ public abstract class AgentController : MonoBehaviour
             //HandleWandering(); // Añadimos el comportamiento de búsqueda y movimiento
             MoveToRandomDestination();
             EnsureAgentOnNavMesh();
+
+            //// Verificar la velocidad del agente
+            //float currentSpeed = navMeshAgent.velocity.magnitude;
+            //if (currentSpeed > 0.1f) // Si el agente se está moviendo
+            //{
+            //    if (currentSpeed > navMeshAgent.speed) // Si la velocidad actual es mayor que la velocidad normal
+            //    {
+            //        // Correr
+            //        animator.SetFloat("Speed", 2f); // Ajusta el parámetro "Speed" de la animación a un valor mayor para correr
+            //    }
+            //    else
+            //    {
+            //        // Caminar
+            //        animator.SetFloat("Speed", 1f); // Ajusta el parámetro "Speed" de la animación a un valor menor para caminar
+            //    }
+            //}
+            //else
+            //{
+            //    // Detenerse
+            //    animator.SetFloat("Speed", 0f); // Ajusta el parámetro "Speed" de la animación a 0 para detenerse
+            //}
         }
         else
         {

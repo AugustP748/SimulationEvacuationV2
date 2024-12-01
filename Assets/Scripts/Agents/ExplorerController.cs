@@ -18,6 +18,7 @@ public class ExplorerAgent : AgentController
 
     public override void PerformBehavior()
     {
+        agentMaterial.color = Color.yellow;
         //Debug.Log("Explorador en acción...");
 
         //MoveToRandomDestination();

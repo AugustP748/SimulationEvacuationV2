@@ -7,6 +7,7 @@ public class FollowerController : AgentController
 {
     public float detectionRadius = 10f; // Rango en el que puede detectar líderes
     public LayerMask leaderLayer;       // Capa para identificar líderes
+
     // Update is called once per frame
     protected override void Update()
     {
@@ -15,6 +16,7 @@ public class FollowerController : AgentController
 
     public override void PerformBehavior()
     {
+        agentMaterial.color = Color.cyan;
 
         if (CheckForExit())
         {

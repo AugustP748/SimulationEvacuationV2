@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class PanicController : AgentController
 {
     public float pushForce = 5f; // Fuerza de empuje
-    private bool behaviorPerformed = false; // Flag to check if PerformBehavior has been executed
+    //private bool behaviorPerformed = false; // Flag to check if PerformBehavior has been executed
 
     // Update is called once per frame
     protected override void Update()
@@ -16,7 +16,8 @@ public class PanicController : AgentController
 
     public override void PerformBehavior()
     {
-        behaviorPerformed = true; // Set the flag to true when PerformBehavior is executed
+        agentMaterial.color = Color.black;
+       // behaviorPerformed = true; // Set the flag to true when PerformBehavior is executed
         MoveToRandomDestination();
     }
 

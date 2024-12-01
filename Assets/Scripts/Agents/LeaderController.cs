@@ -25,7 +25,7 @@ public class LeaderController : AgentController
 
     public override void PerformBehavior()
     {
-
+        agentMaterial.color = Color.blue;
 
         exitObject = GameObject.FindGameObjectWithTag("Exit");
         if (exitObject != null)
