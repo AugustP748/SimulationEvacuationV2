@@ -75,6 +75,7 @@ public abstract class AgentController : MonoBehaviour
         else
         {
             PerformBehavior();
+            CheckForFire();
         }
     }
 
@@ -109,6 +110,7 @@ public abstract class AgentController : MonoBehaviour
                 {
                     //Debug.Log($"{gameObject.name} ha detectado la alarma.");
                     hasHeardAlarm = true;
+                    navMeshAgent.speed *= 8f; // Aumentar la velocidad del agente
                     break;
                 }
             }
@@ -150,6 +152,7 @@ public abstract class AgentController : MonoBehaviour
         }
         return false;
     }
+
 
  
 
@@ -227,6 +230,29 @@ public abstract class AgentController : MonoBehaviour
     }
 
     public abstract void PerformBehavior(); // Método abstracto para sobrescribir en las clases hijas
+    protected void CheckForFire()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, hearingRadius);
+        bool fireDetected = false;
+
+        foreach (var collider in colliders)
+        {
+            if (collider.CompareTag("Fire"))
+            {
+                fireDetected = true;
+                break;
+            }
+        }
+
+        if (fireDetected)
+        {
+            navMeshAgent.speed = 20f;
+        }
+        else
+        {
+            navMeshAgent.speed = 8f;
+        }
+    }
 }
 
 
