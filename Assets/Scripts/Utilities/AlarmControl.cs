@@ -35,11 +35,26 @@ public class AlarmControl : MonoBehaviour
             {
                 if (collider.CompareTag("Fire"))
                 {
-                    ActivateAlarm();
+                    ActivateAllAlarms();
                     ChangeColor(fireDetectedColor);
                     isActive = true;
                     break;
                 }
+            }
+        }
+    }
+
+    private void ActivateAllAlarms()
+    {
+        GameObject[] alarms = GameObject.FindGameObjectsWithTag("Alarm");
+        foreach (var alarm in alarms)
+        {
+            AlarmControl alarmControl = alarm.GetComponent<AlarmControl>();
+            if (alarmControl != null && !alarmControl.isActive)
+            {
+                alarmControl.ActivateAlarm();
+                alarmControl.ChangeColor(fireDetectedColor);
+                alarmControl.isActive = true;
             }
         }
     }
