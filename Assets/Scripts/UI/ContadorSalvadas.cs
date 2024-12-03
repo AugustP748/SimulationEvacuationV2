@@ -18,6 +18,6 @@ public class ContadorSalvadas : MonoBehaviour
     {
         salvadas++;
         textMesh.text = "Gente salvada: " + salvadas;
-        GameManager.Instance.RegistrarSalvado();
+        //GameManager.Instance.RegistrarSalvado();
     }
 }

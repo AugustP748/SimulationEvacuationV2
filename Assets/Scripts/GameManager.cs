@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
 
     private bool isPaused = false;
 
+    [SerializeField] private ContadorSalvadas salvadas;
+    [SerializeField] private ContadorMuertes muertes;
+
     private void Awake()
     {
         if (Instance == null)
@@ -59,8 +62,18 @@ public class GameManager : MonoBehaviour
         return isPaused;
     }
 
-    public void RegistrarMuerte() => Muertes++;
-    public void RegistrarSalvado() => Salvados++;
+    public void RegistrarMuerte()
+    {
+        Muertes++;
+        muertes.IncrementarMuertes();
+    }
+
+    public void RegistrarSalvado()
+    {
+        Salvados++;
+        salvadas.IncrementarSalvadas();
+    }
+
     public void RegistrarTiempo(float tiempo) => TiempoSimulacion = tiempo;
 
     public void ResetDatos()

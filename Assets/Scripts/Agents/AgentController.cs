@@ -21,8 +21,8 @@ public abstract class AgentController : MonoBehaviour
 
     //public Animator animator;
 
-    [SerializeField] private ContadorSalvadas salvadas;
-    [SerializeField] private ContadorMuertes muertes;
+    //[SerializeField] private ContadorSalvadas salvadas;
+    //[SerializeField] private ContadorMuertes muertes;
 
 
     // Reference to the Agents object
@@ -194,7 +194,8 @@ public abstract class AgentController : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            muertes.IncrementarMuertes();
+            GameManager.Instance.RegistrarMuerte();
+            //muertes.IncrementarMuertes();
             Destroy(gameObject);
         }
     }
@@ -203,7 +204,8 @@ public abstract class AgentController : MonoBehaviour
     {
         if (other.CompareTag("Exit"))
         {
-            salvadas.IncrementarSalvadas();
+            GameManager.Instance.RegistrarSalvado();
+            //salvadas.IncrementarSalvadas();
             Destroy(gameObject);
         }
     }
