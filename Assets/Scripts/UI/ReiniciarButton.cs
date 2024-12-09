@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ReiniciarButton : MonoBehaviour
 {
+
+   // public GameObject GameManagerObject;
     // Start is called before the first frame update
     void Start()
     {
-
+        //DontDestroyOnLoad(GameManagerObject);
     }
 
     // Update is called once per frame
@@ -21,6 +23,7 @@ public class ReiniciarButton : MonoBehaviour
     {
         Time.timeScale = 1f;    
         AudioListener.pause = false;
+        GameManager.Instance.simulationEnded = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TiempoSimulacion tiempoSimulacionObject;
     [SerializeField] private GameObject Pausa;
     private bool isPaused = false;
+    public bool simulationEnded = false;
 
     [SerializeField] private ContadorSalvadas salvadas;
     [SerializeField] private ContadorMuertes muertes;
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -42,10 +43,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(!simulationEnded)
         {
-            TogglePause();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                TogglePause();
+            }
         }
+        
     }
 
     public void TogglePause()
@@ -89,6 +94,7 @@ public class GameManager : MonoBehaviour
     {
         if (Muertes + Salvados == AgentCount)
         {
+            simulationEnded = true;
             StopSimulation();
         }
     }
@@ -105,7 +111,10 @@ public class GameManager : MonoBehaviour
         Muertes = 0;
         Salvados = 0;
         TiempoSimulacion = 0;
+        Pausa.SetActive(false);
     }
+
+
 
 
     //private void CountAgents()

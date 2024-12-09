@@ -31,6 +31,9 @@ public class CanvasResultado : MonoBehaviour
 
         Time.timeScale = 0f; // Pause the simulations
         AudioListener.pause = true;
+
+        Cursor.visible = true; // Hide the mouse cursor
+        Cursor.lockState = CursorLockMode.Confined; // Lock the mouse cursor
     }
 }
 

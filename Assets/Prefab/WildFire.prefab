@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1273915125232972}
   serializedVersion: 2
   m_LocalRotation: {x: -0.68224406, y: -0.19525899, z: 0.1895774, w: 0.6785849}
-  m_LocalPosition: {x: 0, y: -0.24047133, z: 0}
+  m_LocalPosition: {x: -0.019, y: -0.358, z: 0.001}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273915125232972}
   serializedVersion: 8
-  lengthInSec: 10
+  lengthInSec: 600
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
@@ -4635,7 +4635,7 @@ Transform:
   m_GameObject: {fileID: 1421748765687022}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.079, z: 0}
+  m_LocalPosition: {x: 0, y: -0.414, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9372,7 +9372,7 @@ GameObject:
   - component: {fileID: 198679442476388764}
   - component: {fileID: 199266017805695016}
   - component: {fileID: 4054623230929491870}
-  - component: {fileID: 6874970057662725436}
+  - component: {fileID: 2068925586918245286}
   m_Layer: 0
   m_Name: WildFire
   m_TagString: Fire
@@ -9389,7 +9389,7 @@ Transform:
   m_GameObject: {fileID: 1956197547661106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.299654, y: 2.84, z: -16.36378}
+  m_LocalPosition: {x: -10.02, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9406,7 +9406,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956197547661106}
   serializedVersion: 8
-  lengthInSec: 30
+  lengthInSec: 600
   simulationSpeed: 1.25
   stopAction: 0
   cullingMode: 3
@@ -9652,8 +9652,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 3
+      scalar: 3
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10037,7 +10037,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0.00000045777983, y: -0.53, z: 0.18579462}
     m_Rotation: {x: 270, y: -0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 0.6}
+    m_Scale: {x: 1, y: 1, z: 0.01}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -14227,8 +14227,8 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 1.2
-  m_Center: {x: 0.03, y: -0.28, z: 0.21}
---- !u!114 &6874970057662725436
+  m_Center: {x: 0, y: -0.48, z: 0.21}
+--- !u!114 &2068925586918245286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14240,9 +14240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de741bdf0ddaed34a867c199cdadd858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expansionRate: 2
+  expansionRate: 1.5
   damageAmount: 25
-  damageInterval: 3
+  damageInterval: 1
 --- !u!1 &1982324152055030
 GameObject:
   m_ObjectHideFlags: 0
@@ -14260,7 +14260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4856345040711628
 Transform:
   m_ObjectHideFlags: 0
@@ -14270,7 +14270,7 @@ Transform:
   m_GameObject: {fileID: 1982324152055030}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.268, z: 0}
+  m_LocalPosition: {x: 0, y: -0.414, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14907,7 +14907,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 2
+    type: 10
     angle: 90
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -14994,7 +14994,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1.8009237
+      value: 2
       mode: 0
       spread: 0
       speed:

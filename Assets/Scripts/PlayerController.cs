@@ -17,21 +17,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Movimiento con WASD
-        float moveX = Input.GetAxis("Horizontal"); // A/D
-        float moveZ = Input.GetAxis("Vertical");   // W/S
-        float moveY = 0f;
-
-        // Movimiento vertical (subir/bajar con Q/E)
-        if (Input.GetKey(KeyCode.E)) moveY = 1f;
-        if (Input.GetKey(KeyCode.Q)) moveY = -1f;
-
-        Vector3 move = transform.right * moveX + transform.forward * moveZ + transform.up * moveY;
-        transform.position += move * moveSpeed * Time.deltaTime;
-
-        // Rotación de la cámara con el mouse
         if (Time.timeScale != 0f)
         {
+            // Movimiento con WASD
+            float moveX = Input.GetAxis("Horizontal"); // A/D
+            float moveZ = Input.GetAxis("Vertical");   // W/S
+            float moveY = 0f;
+
+            // Movimiento vertical (subir/bajar con Q/E)
+            if (Input.GetKey(KeyCode.E)) moveY = 1f;
+            if (Input.GetKey(KeyCode.Q)) moveY = -1f;
+
+            Vector3 move = transform.right * moveX + transform.forward * moveZ + transform.up * moveY;
+            transform.position += move * moveSpeed * Time.deltaTime;
+
+            // Rotación de la cámara con el mouse
+       
             float mouseX = Input.GetAxis("Mouse X") * lookSpeed;
             float mouseY = Input.GetAxis("Mouse Y") * lookSpeed;
 
