@@ -26,10 +26,10 @@ public class TiempoSimulacion : MonoBehaviour
             tiempo += Time.deltaTime;
             textMesh.text = "Tiempo de simulación: " + tiempo.ToString("F2") + "s";
 
-            if (tiempo >= tiempoSimulacion)
-            {
-                StopSimulation();
-            }
+            //if (tiempo >= tiempoSimulacion)
+            //{
+            //    StopSimulation();
+            //}
         }
     }
 

@@ -240,6 +240,7 @@ public abstract class AgentController : MonoBehaviour
             if (collider.CompareTag("Fire"))
             {
                 fireDetected = true;
+              // Debug.Log($"{gameObject.name} ve el fuego");
                 break;
             }
         }

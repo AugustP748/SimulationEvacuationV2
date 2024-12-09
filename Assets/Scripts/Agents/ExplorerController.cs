@@ -42,7 +42,7 @@ public class ExplorerAgent : AgentController
 
         if (currentPointIndex == pointsOfInterest.Length)
         {
-            Debug.Log("Explorador ha terminado de explorar.");
+            //Debug.Log("Explorador ha terminado de explorar.");
             MoveToExit();
             return;
         }
@@ -102,7 +102,7 @@ public class ExplorerAgent : AgentController
         {
             Vector3 exitPosition = exit.transform.position;
             navMeshAgent.SetDestination(exitPosition);
-            Debug.Log($"{gameObject.name} detectó una salida y se dirige hacia ella.");
+            //Debug.Log($"{gameObject.name} detectó una salida y se dirige hacia ella.");
         }
     }
 

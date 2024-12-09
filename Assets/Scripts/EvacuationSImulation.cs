@@ -77,14 +77,7 @@ public class EvacuationSImulation : MonoBehaviour
         randomDirection += transform.position;
         NavMeshHit hit;
         NavMesh.SamplePosition(randomDirection, out hit, 50, 1);
-        return new Vector3(hit.position.x, 2.84f, hit.position.z);
-    }
-
-    IEnumerator SpawnFire()
-    {
-        yield return new WaitForSeconds(1);
-        Vector3 firePosition = GetRandomFirePosition();
-        Instantiate(firePrefab, firePosition, Quaternion.identity);
+        return new Vector3(hit.position.x, 0.4f, hit.position.z);
     }
 
     Vector3 GetRandomFirePosition()
@@ -140,7 +133,7 @@ public class EvacuationSImulation : MonoBehaviour
                 break;
         }
 
-        return new Vector3(x, 0.4f, z);
+        return new Vector3(x, -1f, z);
     }
 
     // Update is called once per frame

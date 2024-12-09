@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class StartButton : MonoBehaviour
 {
     public GameObject evacuationSimulation;
+    public GameObject player;
     public TMP_InputField inputField;
     [SerializeField] private TiempoSimulacion tiempoSimulacion;
 
@@ -27,7 +28,8 @@ public class StartButton : MonoBehaviour
 
         // Call the SpawnAgents function in the evacuationSimulation object
         evacuationSimulation.GetComponent<EvacuationSImulation>().SpawnAgents(agentCount);
-
+        player.GetComponent<PlayerController>().StartSimulation();
+        GameManager.Instance.AgentCount = agentCount;
 
         evacuationSimulation.GetComponent<EvacuationSImulation>().StartSimulation();
         tiempoSimulacion.StartSimulation();

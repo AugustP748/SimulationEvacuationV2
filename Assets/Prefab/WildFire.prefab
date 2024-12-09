@@ -9372,6 +9372,7 @@ GameObject:
   - component: {fileID: 198679442476388764}
   - component: {fileID: 199266017805695016}
   - component: {fileID: 4054623230929491870}
+  - component: {fileID: 6874970057662725436}
   m_Layer: 0
   m_Name: WildFire
   m_TagString: Fire
@@ -14225,8 +14226,23 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3.6596115
-  m_Center: {x: -0.061067104, y: -0.19919431, z: 0.2716422}
+  m_Radius: 1.2
+  m_Center: {x: 0.03, y: -0.28, z: 0.21}
+--- !u!114 &6874970057662725436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956197547661106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de741bdf0ddaed34a867c199cdadd858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expansionRate: 2
+  damageAmount: 25
+  damageInterval: 3
 --- !u!1 &1982324152055030
 GameObject:
   m_ObjectHideFlags: 0

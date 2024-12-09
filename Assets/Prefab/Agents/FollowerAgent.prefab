@@ -173,14 +173,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWanderRadius: 5
   maxWanderRadius: 10
-  health: 1000
+  health: 100
   hearingRadius: 20
   fieldOfViewAngle: 110
   exitLayer:
     serializedVersion: 2
     m_Bits: 0
-  salvadas: {fileID: 0}
-  muertes: {fileID: 0}
   detectionRadius: 10
   leaderLayer:
     serializedVersion: 2

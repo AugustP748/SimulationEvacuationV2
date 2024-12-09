@@ -9,13 +9,24 @@ public class GameManager : MonoBehaviour
     public int Muertes { get; private set; }
     public int Salvados { get; private set; }
     public float TiempoSimulacion { get; private set; }
-    public int AgentCount { get; private set; } // New property for counting objects with tag "Agent"
+    public int AgentCount
+    {
+        get { return agentCount; }
+        set { agentCount = value; }
+    }
+    private int agentCount;
 
+    [SerializeField] private TiempoSimulacion tiempoSimulacionObject;
+    [SerializeField] private GameObject Pausa;
     private bool isPaused = false;
 
     [SerializeField] private ContadorSalvadas salvadas;
     [SerializeField] private ContadorMuertes muertes;
 
+    public void Start()
+    {
+        Pausa.SetActive(false);
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -45,15 +56,13 @@ public class GameManager : MonoBehaviour
         {
             AudioListener.pause = true;
             Time.timeScale = 0f; // Pausa el tiempo
-            // Muestra el menú de pausa
-            //UIManager.Instance.ShowPauseMenu();
+            Pausa.SetActive(true);
         }
         else
         {
             Time.timeScale = 1f; // Reanuda el tiempo
             AudioListener.pause = false;
-            // Oculta el menú de pausa
-            //UIManager.Instance.HidePauseMenu();
+            Pausa.SetActive(false);
         }
     }
 
@@ -66,12 +75,27 @@ public class GameManager : MonoBehaviour
     {
         Muertes++;
         muertes.IncrementarMuertes();
+        CheckSimulationStatus();
     }
 
     public void RegistrarSalvado()
     {
         Salvados++;
         salvadas.IncrementarSalvadas();
+        CheckSimulationStatus();
+    }
+
+    private void CheckSimulationStatus()
+    {
+        if (Muertes + Salvados == AgentCount)
+        {
+            StopSimulation();
+        }
+    }
+
+    private void StopSimulation()
+    {
+        tiempoSimulacionObject.StopSimulation();
     }
 
     public void RegistrarTiempo(float tiempo) => TiempoSimulacion = tiempo;
@@ -83,9 +107,10 @@ public class GameManager : MonoBehaviour
         TiempoSimulacion = 0;
     }
 
-    private void CountAgents()
-    {
-        GameObject[] agents = GameObject.FindGameObjectsWithTag("Agent");
-        AgentCount = agents.Length;
-    }
+
+    //private void CountAgents()
+    //{
+    //    GameObject[] agents = GameObject.FindGameObjectsWithTag("Agent");
+    //    AgentCount = agents.Length;
+    //}
 }
