@@ -14,9 +14,18 @@ public class FireController : MonoBehaviour
     //private bool isPlayerInFire = false; // Para controlar si el jugador está en el fuego
     private Coroutine damageCoroutine;
 
+    public float explosionForce = 500f; // Fuerza de la explosión
+    public float explosionRadius = 5f; // Radio de la explosión
+    public float upwardsModifier = 1f; // Elevación de los objetos por la explosión
+
     // Start is called before the first frame update
     void Start()
     {
+        // Posición de la explosión
+        Vector3 explosionPosition = transform.position;
+
+        // Llama a la explosión
+        TriggerExplosion(explosionPosition);
 
     }
 
@@ -39,6 +48,24 @@ public class FireController : MonoBehaviour
             newScale.y = 2;
         }
         transform.localScale = newScale;
+    }
+
+    public void TriggerExplosion(Vector3 explosionPosition)
+    {
+        // Encuentra todos los colliders con el tag "obstacle" en el rango de la explosión
+        Collider[] colliders = Physics.OverlapSphere(explosionPosition, explosionRadius, LayerMask.GetMask("obstacle"));
+
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+                // Aplica la fuerza explosiva
+                rb.AddExplosionForce(explosionForce, explosionPosition, explosionRadius, upwardsModifier);
+            }
+        }
+
     }
 
     //private void OnTriggerStay(Collider other)

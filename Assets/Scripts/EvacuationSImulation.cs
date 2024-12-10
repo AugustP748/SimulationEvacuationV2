@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +12,7 @@ public class EvacuationSImulation : MonoBehaviour
     public GameObject explorerPrefab;
     public GameObject panicStrickerPrefab;
     //[SerializeField] private StartButton startButton;
+    public NavMeshSurface surface; // Necesitas tener este componente en un objeto de la escena
 
     // Start is called before the first frame update
     public void StartSimulation()
@@ -67,8 +69,50 @@ public class EvacuationSImulation : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         Vector3 randomPosition = GetRandomNavMeshPosition();
+
         Instantiate(bigExplosionPrefab, randomPosition, Quaternion.identity);
         Instantiate(firePrefab, randomPosition, Quaternion.identity); // Spawning WildFire at the same position
+        // Encuentra todos los objetos con el tag especificado
+        GameObject[] objectsToModify = GameObject.FindGameObjectsWithTag("Obstacle");
+
+        foreach (GameObject obj in objectsToModify)
+        {
+            obj.isStatic = false; // Desactiva el estado estático
+
+
+            // Desactivar NavMeshObstacle si existe
+            NavMeshObstacle obstacle = obj.GetComponent<NavMeshObstacle>();
+            if (obstacle != null)
+            {
+                obstacle.enabled = false;
+            }
+
+            // Agregar o configurar Rigidbody
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+            if (rb == null)
+            {
+                rb = obj.AddComponent<Rigidbody>();
+                rb.mass = 0.1f;
+            }
+
+            rb.mass = 0.1f;
+            //rb.isKinematic = false;
+            //rb.useGravity = true;
+            //rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+            //// Configurar colliders
+            //Collider[] colliders = obj.GetComponents<Collider>();
+            //foreach (Collider col in colliders)
+            //{
+            //    col.enabled = true;
+            //}
+
+            //NavMeshSurface surface = FindObjectOfType<NavMeshSurface>();
+            //if (surface != null)
+            //{
+            //    surface.BuildNavMesh();
+            //}
+        }
     }
 
     Vector3 GetRandomNavMeshPosition()

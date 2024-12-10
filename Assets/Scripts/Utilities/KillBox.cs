@@ -28,5 +28,10 @@ public class KillBox : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(other.gameObject);
+        }
     }
+
 }
